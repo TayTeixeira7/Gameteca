@@ -9,6 +9,7 @@ import controller.LoginController;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,12 +41,14 @@ public class LoginView extends javax.swing.JFrame {
         BtnLogar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         BtnCadastrar = new javax.swing.JButton();
+        BtnExcluirUsuario = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela de Login");
 
         jPanel2.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Senha:");
@@ -75,30 +78,45 @@ public class LoginView extends javax.swing.JFrame {
             }
         });
 
+        BtnExcluirUsuario.setBackground(new java.awt.Color(102, 102, 255));
+        BtnExcluirUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        BtnExcluirUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        BtnExcluirUsuario.setText("Deseja excluir conta ?");
+        BtnExcluirUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnExcluirUsuarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(68, 68, 68)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtSenha)))
-                        .addGap(31, 31, 31))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(BtnLogar)
-                        .addGap(40, 40, 40)
-                        .addComponent(BtnCadastrar)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtSenha)))
+                                .addGap(31, 31, 31))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(BtnLogar)
+                                .addGap(40, 40, 40)
+                                .addComponent(BtnCadastrar))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(BtnExcluirUsuario)))
                 .addContainerGap(103, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -118,7 +136,9 @@ public class LoginView extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnLogar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(BtnExcluirUsuario)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         setJMenuBar(jMenuBar1);
@@ -148,10 +168,16 @@ public class LoginView extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnLogarActionPerformed
 
     private void BtnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadastrarActionPerformed
-            FormCadastroView tela = new FormCadastroView();
-            tela.setVisible(true);
-            dispose();
+        FormCadastroView tela = new FormCadastroView();
+        tela.setVisible(true);
+        dispose();
     }//GEN-LAST:event_BtnCadastrarActionPerformed
+
+    private void BtnExcluirUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnExcluirUsuarioActionPerformed
+        ExcluirUsuarioView tela = new ExcluirUsuarioView();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BtnExcluirUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,6 +222,7 @@ public class LoginView extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCadastrar;
+    private javax.swing.JButton BtnExcluirUsuario;
     private javax.swing.JButton BtnLogar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

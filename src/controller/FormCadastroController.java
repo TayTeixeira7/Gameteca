@@ -29,8 +29,6 @@ public class FormCadastroController {
     
     public void salvaUsuario(){
         
-        
-    
         String usuario = view.getTxtUsuario().getText();
         String senha = view.getTxtSenha().getText();
         String nome = view.getTxtNome().getText();
@@ -40,15 +38,12 @@ public class FormCadastroController {
         
         Usuario user = new Usuario(usuario, senha, nome, email, tel, cpf);
         
-        
         try {
             Connection conexao = new Conexao().getConnection();
             UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
             usuarioDao.insert(user);
             
             JOptionPane.showMessageDialog(null, "Usuario salvo com sucesso");
-        
-        
         } catch (SQLException ex) {
             Logger.getLogger(FormCadastroView.class.getName()).log(Level.SEVERE, null, ex);
         }

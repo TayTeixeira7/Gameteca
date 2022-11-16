@@ -39,10 +39,8 @@ public class LoginController {
         boolean existe = usuarioDao.autenticarUsuario(userAutenticar);
         
         if (existe){
-        
             MenuView teladeMenu = new MenuView();
-            teladeMenu.setVisible(existe);
-        
+            teladeMenu.setVisible(existe);        
         }else{
             JOptionPane.showMessageDialog(view, "usuario ou senha invalidos");
         }
