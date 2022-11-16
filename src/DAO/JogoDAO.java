@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.sql.ResultSet;
 import model.Jogo;
 
 /**
@@ -20,13 +21,18 @@ import model.Jogo;
  */
 public class JogoDAO {
     private final Connection connection;
+    private PreparedStatement pstdados = null;
     public Jogo jogo;
+    
+    //sql
+    private static final String sqlexcluir = "DELETE FROM jogo WHERE nome_jogo = ?";    
     
     public JogoDAO(Connection connection){
             this.connection = connection;
     }
     
 
+    // Método Inserir    
     public void insert(Jogo jogo) throws SQLException{
         
         String sql = "insert into jogo(nome_jogo, genero_jogo, ano_jogo, desenvolvedora_jogo, distribuidora_jogo, progresso_jogo) values("
@@ -36,6 +42,28 @@ public class JogoDAO {
         statement.execute();
     }
     
+    // Método Excluir
+    public int excluir(String nameTarget) {
+
+        try {
+            int tipo = ResultSet.TYPE_SCROLL_SENSITIVE;
+            int concorrencia = ResultSet.CONCUR_UPDATABLE;
+            
+            pstdados = connection.prepareStatement(sqlexcluir, tipo, concorrencia);
+            pstdados.setString(1, nameTarget);
+            int resposta = pstdados.executeUpdate();
+            pstdados.close();
+            
+            return resposta;
+            
+        } catch (SQLException erro) {
+            System.out.println("Erro na execução da exclusão = " + erro);
+            return 0;
+        }
+        
+    }    
+    
+    //Método Listar Jogos    
     public ArrayList<Jogo> listarTodosJogos() throws SQLException{
         
         

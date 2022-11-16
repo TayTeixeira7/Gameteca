@@ -45,6 +45,7 @@ public class MenuView extends javax.swing.JFrame {
         TabelaJogo = new javax.swing.JTable();
         btnListar = new javax.swing.JButton();
         btnCadastrar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JToggleButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuCadastrar = new javax.swing.JMenu();
         menuItemCadastrarJogo = new javax.swing.JMenuItem();
@@ -57,6 +58,12 @@ public class MenuView extends javax.swing.JFrame {
 
         TabelaJogo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -83,10 +90,15 @@ public class MenuView extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        TabelaJogo.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        TabelaJogo.setGridColor(new java.awt.Color(204, 204, 204));
+        TabelaJogo.setMinimumSize(new java.awt.Dimension(2147483647, 192));
+        TabelaJogo.setPreferredSize(new java.awt.Dimension(450, 193));
+        TabelaJogo.setShowGrid(true);
         jScrollPane1.setViewportView(TabelaJogo);
 
         btnListar.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
-        btnListar.setText("LISTAR");
+        btnListar.setText("Listar");
         btnListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnListarActionPerformed(evt);
@@ -98,6 +110,14 @@ public class MenuView extends javax.swing.JFrame {
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarActionPerformed(evt);
+            }
+        });
+
+        btnExcluir.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
             }
         });
 
@@ -136,26 +156,29 @@ public class MenuView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(184, 184, 184)
-                .addComponent(btnCadastrar)
-                .addGap(135, 135, 135)
-                .addComponent(btnListar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnListar)
-                    .addComponent(btnCadastrar))
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnListar)
+                        .addGap(66, 66, 66)
+                        .addComponent(btnCadastrar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnExcluir)))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
@@ -212,6 +235,12 @@ public class MenuView extends javax.swing.JFrame {
             dispose();
     }//GEN-LAST:event_menuItemCadastrarJogoActionPerformed
 
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        ExcluirJogoView tela = new ExcluirJogoView();
+            tela.setVisible(true);
+            dispose();
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -254,6 +283,7 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JMenu MenuOpções;
     private javax.swing.JTable TabelaJogo;
     private javax.swing.JButton btnCadastrar;
+    private javax.swing.JToggleButton btnExcluir;
     private javax.swing.JButton btnListar;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;

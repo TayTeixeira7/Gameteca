@@ -52,7 +52,6 @@ public class CadastroJogoController {
         } catch (SQLException ex) {
             Logger.getLogger(CadastroJogoView.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-        
+    }        
   }
 
