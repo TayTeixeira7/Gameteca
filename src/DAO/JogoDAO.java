@@ -100,5 +100,26 @@ public class JogoDAO {
     return jogo;    
         
     }
+    public void editar(Jogo jogo){
+        String sql = "UPDATE jogo set nome_jogo=?, genero_jogo=?, ano_jogo=?, desenvolvedora_jogo=?, distribuidora_jogo=?, progresso_jogo=? WHERE id_jogo=?";
+        
+        try { 
+            PreparedStatement pds = connection.prepareStatement(sql);
 
+            pds.setString(1, jogo.getNomeJogo());
+            pds.setString(2, jogo.getGeneroJogo());
+            pds.setInt(3, jogo.getAnoLancamentoJogo());
+            pds.setString(4, jogo.getDesenvolvedoraJogo());     
+            pds.setString(5, jogo.getDistribuidoraJogo());
+            pds.setFloat(6, jogo.getProgressoJogo());
+            pds.setInt(7, jogo.getIdJogo());
+            
+            pds.executeUpdate();
+            pds.close();
+           
+        } 
+        catch (SQLException exc) { 
+            throw new RuntimeException(exc); 
+        } 
+    }
 }

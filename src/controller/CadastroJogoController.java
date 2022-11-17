@@ -38,18 +38,18 @@ public class CadastroJogoController {
         Jogo jog = new Jogo(nomeJogo, generoJogo, anoLancamento, desenvolvedoraJogo, distribuidoraJogo, progressoJogo);
         
         try {
-            Connection conexao = new Conexao().getConnection();
+            if((nomeJogo.isEmpty()) || (generoJogo.isEmpty()) || (distribuidoraJogo.isEmpty()) || (desenvolvedoraJogo.isEmpty()) ){
+                JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
+            }
+            else{
+                Connection conexao = new Conexao().getConnection();            
+                JogoDAO jogoDao = new JogoDAO(conexao);           
+                jogoDao.insert(jog);
             
-            JogoDAO jogoDao = new JogoDAO(conexao);
-            
-            jogoDao.insert(jog);
-            
-            
-            
-            JOptionPane.showMessageDialog(null, "Usuario salvo com sucesso");
-        
-        
-        } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Usuario salvo com sucesso");
+            }              
+        }
+        catch (SQLException ex) {
             Logger.getLogger(CadastroJogoView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }        

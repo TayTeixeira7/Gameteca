@@ -39,12 +39,18 @@ public class FormCadastroController {
         Usuario user = new Usuario(usuario, senha, nome, email, tel, cpf);
         
         try {
-            Connection conexao = new Conexao().getConnection();
-            UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
-            usuarioDao.insert(user);
+            if((nome.isEmpty()) || (email.isEmpty()) || (usuario.isEmpty()) || (senha.isEmpty()) || (cpf.isEmpty())){
+                JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
+            }
+            else{
+                Connection conexao = new Conexao().getConnection();
+                UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
+                usuarioDao.insert(user);
             
-            JOptionPane.showMessageDialog(null, "Usuario salvo com sucesso");
-        } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Usuario salvo com sucesso");
+            }           
+        } 
+        catch (SQLException ex) {
             Logger.getLogger(FormCadastroView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
